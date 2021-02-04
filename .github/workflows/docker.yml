@@ -6,7 +6,6 @@ jobs:
   prepare:
     name: Prepare Docker build
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout IntelMQ-Docker
         uses: actions/checkout@v2
@@ -42,6 +41,9 @@ jobs:
           cd work
           ./build.sh
 
-    test:
+  test:
+    name: Prepare Docker build
+    runs-on: ubuntu-latest
+    steps:
       - name: Test docker setup
         run: ./test.sh
