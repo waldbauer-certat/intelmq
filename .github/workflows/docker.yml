@@ -1,0 +1,44 @@
+name: Docker
+
+on: push
+
+jobs:
+  prepare:
+    name: Prepare Docker build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout IntelMQ-Docker
+        uses: actions/checkout@v2
+        with:
+          repository: certat/intelmq-docker
+          path: ./work
+      
+      - name: Checkout IntelMQ
+        uses: actions/checkout@v2
+        with:
+          path: ./work/intelmq
+
+      - name: Checkout IntelMQ-Manager
+        uses: actions/checkout@v2
+        with:
+          repository: certtools/intelmq-manager
+          path: ./work/intelmq-manager
+
+      - name: Checkout IntelMQ-API
+        uses: actions/checkout@v2
+        with:
+          repository: certtools/intelmq-api
+          path: ./work/intelmq-api
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build?
+        run: | 
+          ls -al
+          cd work
+          ls -al 
