@@ -56,4 +56,5 @@ jobs:
 
       - name: Test
         run: |
-          ls -al
+          cd work
+          ./test.sh
