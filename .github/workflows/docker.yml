@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.6]
 
     steps:
       - name: Checkout IntelMQ-Docker
@@ -44,6 +44,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      
+      - name: Install python build requirements
+        runs: |
+          pip3 install mako
 
       - name: Build
         run: | 
